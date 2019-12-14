@@ -1,6 +1,6 @@
 /** Global Variables */
 
-var margin = {top: 50, right: 50, bottom: 50, left: 50}
+var margin = {top: 50, right: 50, bottom: 50, left: 50};
 var width = 1000 - margin.left - margin.right;
 var height = 500 - margin.top - margin.bottom;
 
@@ -102,7 +102,7 @@ function pageInputSetup(id, drawChart) {
   d3.select(id + "-end").on("change", function(d) {
     endPage = Number(d3.select(this).property("value")) + 1;
     drawChart(pageData, startPage, endPage);
-  })
+  });
 }
 
 function colorPalette() {
@@ -135,7 +135,7 @@ function colorMenuSetup() {
       border = "#444";
     }
 
-    var button = menu.append('g')
+    var button = menu.append('g');
 
     button
       .append("circle")
@@ -157,12 +157,6 @@ function colorMenuSetup() {
           drawColorChart(pageData, startPage, endPage);
         });
   }
-
-  // var menu = d3.select("#color-menu")
-  //   .append("svg")
-  //   .attr("class", "color-buttons")
-  //   .attr("width", width + margin.left + margin.right)
-  //   .attr("height", 50);
 
   var defs = menu.append("defs");
 
@@ -219,9 +213,9 @@ function colorMenuSetup() {
 }
 
 function loadData() {
-  d3.csv("data/data2.csv", function (data) {
+  d3.csv("data/data2.csv", function(data) {
     pageData = data;
-    d3.csv("data/data_chapters2.csv", function (data) {
+    d3.csv("data/data_chapters2.csv", function(data) {
       chapterData = data;
       drawLChart(pageData, 0, numPages);
       drawSChart(pageData, 0, numPages);
@@ -260,7 +254,7 @@ function drawLineChart(dataSource, feature, start, end) {
   var xAxis = svg.append("g")
     .attr("class", "axis")
     .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x).ticks(5).tickSize(0))
+    .call(d3.axisBottom(x).ticks(5).tickSize(0));
 
   // Add X axis label:
   svg.append("text")
@@ -278,7 +272,7 @@ function drawLineChart(dataSource, feature, start, end) {
     .call(d3.axisLeft(y).ticks(2).tickSize(0));
   yg.select("path")
     .attr("stroke", "white")
-    .attr("stroke-width", 3)
+    .attr("stroke-width", 3);
 
   svg.append("path")
     .datum(data)
@@ -288,7 +282,7 @@ function drawLineChart(dataSource, feature, start, end) {
     .attr("d", d3.line()
       .x(function(d) { return x(d[""]) })
       .y(function(d) { return y(d[feature]) })
-    )
+    );
 }
 
 function drawColorChart(dataSource, start, end) {
@@ -315,7 +309,7 @@ function drawColorChart(dataSource, start, end) {
 
   var stackedData = d3.stack()
     .keys(keys)
-    (data)
+    (data);
 
   // AXES //
 
@@ -365,17 +359,17 @@ function drawColorChart(dataSource, start, end) {
   // Add brushing
   var brush = d3.brushX()
       .extent( [ [0,0], [width,height] ] ) // initialize 0,0 -> width,height
-      .on("end", updateChart)
+      .on("end", updateChart);
 
   // Create the scatter variable: where both the circles and the brush take place
   var areaChart = svg.append('g')
-    .attr("clip-path", "url(#clip)")
+    .attr("clip-path", "url(#clip)");
 
   // Area generator
   var area = d3.area()
     .x(function(d) { return x(d.data[""]); })
     .y0(function(d) { return y(d[0]); })
-    .y1(function(d) { return y(d[1]); })
+    .y1(function(d) { return y(d[1]); });
 
   // Show the areas
   areaChart
@@ -385,7 +379,7 @@ function drawColorChart(dataSource, start, end) {
     .append("path")
       .attr("class", function(d) { return "myArea " + d.key })
       .style("fill", function(d) { return color(d.key); })
-      .attr("d", area)
+      .attr("d", area);
 
   // Add the brushing
   areaChart
@@ -399,15 +393,15 @@ function drawColorChart(dataSource, start, end) {
   // A function that update the chart for given boundaries
   function updateChart() {
 
-    extent = d3.event.selection
+    extent = d3.event.selection;
 
     // If no selection, back to initial coordinate. Otherwise, update X axis domain
     if(!extent){
       if (!idleTimeout) return idleTimeout = setTimeout(idled, 350); // This allows to wait a little bit
-      x.domain(d3.extent(data, function(d) { return d[""]; }))
+      x.domain(d3.extent(data, function(d) { return d[""]; }));
     }else{
-      x.domain([ x.invert(extent[0]), x.invert(extent[1]) ])
-      areaChart.select(".brush").call(brush.move, null) // This remove the grey brush area as soon as the selection has been done
+      x.domain([ x.invert(extent[0]), x.invert(extent[1]) ]);
+      areaChart.select(".brush").call(brush.move, null); // This remove the grey brush area as soon as the selection has been done
     }
 
     // Update axis and area position
@@ -415,11 +409,7 @@ function drawColorChart(dataSource, start, end) {
     areaChart
       .selectAll("path")
       .transition().duration(1000)
-      .attr("d", area)
+      .attr("d", area);
   }
 
-}
-
-function updateChartColor(color) {
-  console.log(color);
 }

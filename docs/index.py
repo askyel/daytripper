@@ -106,7 +106,7 @@ print """
     <h1>Daytripper: Visualizing Trends in Color</h1>
 
     <p>
-      Daytripper, a comic book by Fábio Moon and Gabriel Bá, captures a series
+      Daytripper, a comic book by F&aacute;bio Moon and Gabriel B&aacute;, captures a series
       of seemingly day-to-day moments that end up defining the different story
       arcs in the main character's life. These story arcs include falling in and
       out of love, relationships with parents, friendships, fatherhood, and
@@ -138,15 +138,15 @@ print """
         chapter in Daytripper. There is a slight decline in lightness from the
         beginning of the book to Chapter 6, which has the lowest lightness
         factor. This is the chapter with the horrific plane crash that gives
-        Brás the opportunity to launch his career with a series of obituaries.
+        Br&aacute;s the opportunity to launch his career with a series of obituaries.
         But instead, feeling lost in his life, he goes after his missing friend
         and dies in a crash. In the chapters after Chapter 6, his writing career
         takes off with the publication of his first novel and the lightness of
         the chapters correspondingly increases. It peaks in Chapter 9, the dream
         sequence that ties together many moments visited throughout the book.
-        After the peace Brás comes to with his life at the end of Chapter 9,
-        Chapter 10 darkens with the twilight of Brás's last days. Thus this
-        lightness trend line not only mirrors Brás's career trajectory, but also
+        After the peace Br&aacute;s comes to with his life at the end of Chapter 9,
+        Chapter 10 darkens with the twilight of Br&aacute;s's last days. Thus this
+        lightness trend line not only mirrors Br&aacute;s's career trajectory, but also
         his satisfaction with his life and understanding of his life's purpose.
       </p>
     </div>
@@ -163,10 +163,10 @@ print """
         about the second half of chapters, and dropoff at Chapter 10 follows a
         similar pattern to the trend in lightness. The noticeable difference is the
         spike in Chapter 5, which is actually the chapter with the highest
-        saturation. This is the chapter from the perspective of Brás as a child,
+        saturation. This is the chapter from the perspective of Br&aacute;s as a child,
         when he is still discovering the world and innocent to many of the
         concepts such as aging that he will struggle with later. Thus we can
-        think of the trend in saturation as representing Brás's general
+        think of the trend in saturation as representing Br&aacute;s's general
         happiness with his life.
       </p>
     </div>
@@ -188,11 +188,11 @@ print """
         the particular chapter. That could explain the especially prominent use
         of orange and yellow in Chapter 9, the dream flashback chapter. Blues
         and greens are particularly more prominent in Chapter 4. In this chapter,
-        Brás spends a lot of time in the hospital for the birth of his son. But
-        there is a generally subdued melancholy mood over the chapter as Brás's
-        father passes away and Brás himself has a heart attack at the end. While
+        Br&aacute;s spends a lot of time in the hospital for the birth of his son. But
+        there is a generally subdued melancholy mood over the chapter as Br&aacute;s's
+        father passes away and Br&aacute;s himself has a heart attack at the end. While
         other chapters have flashier, more explosive tragedies, the blues and
-        greens in Chapter 4 represent the quiet sadness Brás keeps to himself
+        greens in Chapter 4 represent the quiet sadness Br&aacute;s keeps to himself
         and his calm passing.
       </p>
     </div>
@@ -205,12 +205,12 @@ print """
   <p>
     Over the whole book, and within the arc of each chapter, lightness is
     pretty variable. Focusing in on Chapter 7 in particular, the lightness is
-    fairly constant until it peaks when Brás sees the hut that his friend Jorge
+    fairly constant until it peaks when Br&aacute;s sees the hut that his friend Jorge
     has been living in, right before he sees him in person. But when Jorge steps
     into the hut, the lightness abruptly drops with the squalor of Jorge's
     living conditions. The lightness makes another sharp decline to its lowest
-    point on page 153 as Jorge suddenly cuts himself and then stabs Brás. The
-    single darkest point of the book is page 136, Brás's death in a car crash
+    point on page 153 as Jorge suddenly cuts himself and then stabs Br&aacute;s. The
+    single darkest point of the book is page 136, Br&aacute;s's death in a car crash
     following the plane crash. It closes the most tragic chapter in terms of
     world events of the book.
   </p>
@@ -247,13 +247,13 @@ print """
   <p>
     Saturation also shows a great range of concentration over the course of the
     book. Looking at Chapter 6, overall it is one of the lowest saturation
-    chapters in the book. At this point Brás is feeling unfulfilled by his
+    chapters in the book. At this point Br&aacute;s is feeling unfulfilled by his
     job and missing his friend Jorge. The one noticeable spike in the chapter
     occurs when the plane crashes and the pages are filled with the fiery colors
     of the disaster. The point of lowest saturation in the book is pages 205 and
-    206, when Brás converses with his doctor in complete blackness at the end of
+    206, when Br&aacute;s converses with his doctor in complete blackness at the end of
     Chapter 10, foreshadowing his choice not to continue treatment and let his
-    life end. The most saturated page is 193, when in a dream Brás reunites with
+    life end. The most saturated page is 193, when in a dream Br&aacute;s reunites with
     his friend Jorge, a rewriting of the violent murder we last saw in that
     setting.
   </p>
@@ -290,16 +290,16 @@ print """
   <p>
     One frequently appearing pattern in hue within chapters is a spike in the
     frequency of red towards the end of the chapter. The arc of most
-    chapters in the book build towards a dramatic event that brings Brás to the
+    chapters in the book build towards a dramatic event that brings Br&aacute;s to the
     end of his life. Red is used to illustrate violent events such as a gunshot,
     spilling of blood, or car crashes. While greens and blues are not as
     generally popular across the book, they play an important role in Chapter 2.
-    After an uncomfortable discussion on race with Jorge, Brás dives into the
+    After an uncomfortable discussion on race with Jorge, Br&aacute;s dives into the
     ocean, where he meets Olinda. He returns to the shore to see Olinda again at
     the festival. And then at the end of the chapter, he drowns in the ocean.
     The blue and green hues rise and fall in prominence like waves across the
     chart. But while the hue of the water tends towards the greens and teals
-    more at the beginning of the chapter, at the end when Brás drowns it is the
+    more at the beginning of the chapter, at the end when Br&aacute;s drowns it is the
     deeper blues that dominate.
   </p>
 
@@ -343,7 +343,7 @@ print """
 
   /** Global Variables */
 
-  var margin = {top: 50, right: 50, bottom: 50, left: 50}
+  var margin = {top: 50, right: 50, bottom: 50, left: 50};
   var width = 1000 - margin.left - margin.right;
   var height = 500 - margin.top - margin.bottom;
 
@@ -445,7 +445,7 @@ print """
     d3.select(id + "-end").on("change", function(d) {
       endPage = Number(d3.select(this).property("value")) + 1;
       drawChart(pageData, startPage, endPage);
-    })
+    });
   }
 
   function colorPalette() {
@@ -478,7 +478,7 @@ print """
         border = "#444";
       }
 
-      var button = menu.append('g')
+      var button = menu.append('g');
 
       button
         .append("circle")
@@ -500,12 +500,6 @@ print """
             drawColorChart(pageData, startPage, endPage);
           });
     }
-
-    // var menu = d3.select("#color-menu")
-    //   .append("svg")
-    //   .attr("class", "color-buttons")
-    //   .attr("width", width + margin.left + margin.right)
-    //   .attr("height", 50);
 
     var defs = menu.append("defs");
 
@@ -562,9 +556,9 @@ print """
   }
 
   function loadData() {
-    d3.csv("data/data2.csv", function (data) {
+    d3.csv("data/data2.csv", function(data) {
       pageData = data;
-      d3.csv("data/data_chapters2.csv", function (data) {
+      d3.csv("data/data_chapters2.csv", function(data) {
         chapterData = data;
         drawLChart(pageData, 0, numPages);
         drawSChart(pageData, 0, numPages);
@@ -603,7 +597,7 @@ print """
     var xAxis = svg.append("g")
       .attr("class", "axis")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x).ticks(5).tickSize(0))
+      .call(d3.axisBottom(x).ticks(5).tickSize(0));
 
     // Add X axis label:
     svg.append("text")
@@ -621,7 +615,7 @@ print """
       .call(d3.axisLeft(y).ticks(2).tickSize(0));
     yg.select("path")
       .attr("stroke", "white")
-      .attr("stroke-width", 3)
+      .attr("stroke-width", 3);
 
     svg.append("path")
       .datum(data)
@@ -631,7 +625,7 @@ print """
       .attr("d", d3.line()
         .x(function(d) { return x(d[""]) })
         .y(function(d) { return y(d[feature]) })
-      )
+      );
   }
 
   function drawColorChart(dataSource, start, end) {
@@ -658,7 +652,7 @@ print """
 
     var stackedData = d3.stack()
       .keys(keys)
-      (data)
+      (data);
 
     // AXES //
 
@@ -708,17 +702,17 @@ print """
     // Add brushing
     var brush = d3.brushX()
         .extent( [ [0,0], [width,height] ] ) // initialize 0,0 -> width,height
-        .on("end", updateChart)
+        .on("end", updateChart);
 
     // Create the scatter variable: where both the circles and the brush take place
     var areaChart = svg.append('g')
-      .attr("clip-path", "url(#clip)")
+      .attr("clip-path", "url(#clip)");
 
     // Area generator
     var area = d3.area()
       .x(function(d) { return x(d.data[""]); })
       .y0(function(d) { return y(d[0]); })
-      .y1(function(d) { return y(d[1]); })
+      .y1(function(d) { return y(d[1]); });
 
     // Show the areas
     areaChart
@@ -728,7 +722,7 @@ print """
       .append("path")
         .attr("class", function(d) { return "myArea " + d.key })
         .style("fill", function(d) { return color(d.key); })
-        .attr("d", area)
+        .attr("d", area);
 
     // Add the brushing
     areaChart
@@ -742,15 +736,15 @@ print """
     // A function that update the chart for given boundaries
     function updateChart() {
 
-      extent = d3.event.selection
+      extent = d3.event.selection;
 
       // If no selection, back to initial coordinate. Otherwise, update X axis domain
       if(!extent){
         if (!idleTimeout) return idleTimeout = setTimeout(idled, 350); // This allows to wait a little bit
-        x.domain(d3.extent(data, function(d) { return d[""]; }))
+        x.domain(d3.extent(data, function(d) { return d[""]; }));
       }else{
-        x.domain([ x.invert(extent[0]), x.invert(extent[1]) ])
-        areaChart.select(".brush").call(brush.move, null) // This remove the grey brush area as soon as the selection has been done
+        x.domain([ x.invert(extent[0]), x.invert(extent[1]) ]);
+        areaChart.select(".brush").call(brush.move, null); // This remove the grey brush area as soon as the selection has been done
       }
 
       // Update axis and area position
@@ -758,14 +752,11 @@ print """
       areaChart
         .selectAll("path")
         .transition().duration(1000)
-        .attr("d", area)
+        .attr("d", area);
     }
 
   }
 
-  function updateChartColor(color) {
-    console.log(color);
-  }
 
   </script>
 
