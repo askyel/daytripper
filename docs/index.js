@@ -274,9 +274,11 @@ function drawLineChart(dataSource, feature, start, end) {
   var y = d3.scaleLinear()
     .domain([ 0, 1 ])
     .range([ height, 0 ]);
-  svg.append("g")
-    .attr("class", "axis")
-    .call(d3.axisLeft(y).ticks(0).tickSize(0))
+  var yg = svg.append("g")
+    .call(d3.axisLeft(y).ticks(2).tickSize(0));
+  yg.select("path")
+    .attr("stroke", "white")
+    .attr("stroke-width", 3)
 
   svg.append("path")
     .datum(data)
@@ -322,7 +324,7 @@ function drawColorChart(dataSource, start, end) {
     .range([ 0, width ]);
   var xAxis = svg.append("g")
     .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x).ticks(5).tickSize(0))
+    .call(d3.axisBottom(x).ticks(5).tickSize(0));
 
   // Add X axis label:
   svg.append("text")
@@ -347,7 +349,7 @@ function drawColorChart(dataSource, start, end) {
     .domain([ 0, maxData ])
     .range([ height, 0 ]);
   svg.append("g")
-    .call(d3.axisLeft(y).ticks(0).tickSize(0))
+    .call(d3.axisLeft(y).ticks(2).tickSize(0));
 
   // BRUSHING //
 
@@ -409,7 +411,7 @@ function drawColorChart(dataSource, start, end) {
     }
 
     // Update axis and area position
-    xAxis.transition().duration(1000).call(d3.axisBottom(x).ticks(5))
+    xAxis.transition().duration(1000).call(d3.axisBottom(x).ticks(5).tickSize(0))
     areaChart
       .selectAll("path")
       .transition().duration(1000)
