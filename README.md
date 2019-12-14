@@ -1,6 +1,6 @@
 # Daytripper Visual Analysis
 
-https://github.mit.edu/pages/6894-sp19/Chronic-Disease-Indicators/
+http://aslevy.scripts.mit.edu/daytripper/index.py
 
 After editing index.js, run:
 `npm run build`
