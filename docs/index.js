@@ -9,7 +9,7 @@ var numPages = 225;
 var chapterData = {};
 
 var startPage = 0;
-var endPage = numPages - 1;
+var endPage = numPages;
 
 var COLORS = ['red', 'orange', 'yellow', 'yellow-green', 'green', 'teal', 'cyan', 'cyan-blue', 'blue', 'purple', 'magenta', 'pink', 'black', 'white'];
 var colorState = COLORS.map(function(c) { return true; });
@@ -18,18 +18,30 @@ pageSetup();
 
 function pageSetup() {
   menuSetup();
+  lMenuSetup();
+  sMenuSetup();
 
   loadData();
 }
 
+function lMenuSetup() {
+  chapterInputSetup("#lightness-chapter", drawLChart);
+  pageInputSetup("#lightness-page", drawLChart);
+}
+
+function sMenuSetup() {
+  chapterInputSetup("#saturation-chapter", drawSChart);
+  pageInputSetup("#saturation-page", drawSChart);
+}
+
 function menuSetup() {
-  chapterInputSetup();
-  pageInputSetup();
+  chapterInputSetup("#chapter", drawColorChart);
+  pageInputSetup("#page", drawColorChart);
   colorMenuSetup();
 }
 
-function chapterInputSetup() {
-  d3.select("#chapter").on("change", function(d) {
+function chapterInputSetup(id, drawChart) {
+  d3.select(id).on("change", function(d) {
     var selectedOption = d3.select(this).property("value");
     var chapter = Number(selectedOption);
 
@@ -81,14 +93,14 @@ function chapterInputSetup() {
   });
 }
 
-function pageInputSetup() {
-  d3.select("#page-start").on("change", function(d) {
+function pageInputSetup(id, drawChart) {
+  d3.select(id + "-start").on("change", function(d) {
     startPage = Number(d3.select(this).property("value"));
     drawChart(pageData, startPage, endPage);
   });
 
-  d3.select("#page-end").on("change", function(d) {
-    endPage = Number(d3.select(this).property("value"));
+  d3.select(id + "-end").on("change", function(d) {
+    endPage = Number(d3.select(this).property("value")) + 1;
     drawChart(pageData, startPage, endPage);
   })
 }
@@ -105,6 +117,7 @@ function colorPalette() {
 
 function colorMenuSetup() {
   d3.select("#color-menu").selectAll(".color-buttons").remove();
+  var gap = 50;
 
   var menu = d3.select("#color-menu")
     .append("svg")
@@ -116,7 +129,7 @@ function colorMenuSetup() {
 
   for (var i in palette) {
     var c = palette[i];
-    var cx = margin.left + (width - 13*60)/2 + i*60;
+    var cx = margin.left + (width - 15*gap)/2 + i*gap;
     var border = "#aaa";
     if (!colorState[i]) {
       border = "#444";
@@ -141,15 +154,15 @@ function colorMenuSetup() {
         .on("click", function(d) {
           colorState[this.id] = !colorState[this.id];
           colorMenuSetup();
-          drawChart(pageData, startPage, endPage);
+          drawColorChart(pageData, startPage, endPage);
         });
   }
 
-  var menu = d3.select("#color-menu")
-    .append("svg")
-    .attr("class", "color-buttons")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", 50);
+  // var menu = d3.select("#color-menu")
+  //   .append("svg")
+  //   .attr("class", "color-buttons")
+  //   .attr("width", width + margin.left + margin.right)
+  //   .attr("height", 50);
 
   var defs = menu.append("defs");
 
@@ -181,27 +194,27 @@ function colorMenuSetup() {
    menu.append('g')
      .append("circle")
        .attr("id", "all-colors")
-       .attr("cx", margin.left + (width - 60)/2)
+       .attr("cx", margin.left + (width - 15*gap)/2 + 14*gap)
        .attr("cy", 35)
        .attr("r", 15)
        .attr("fill", "url(#gradient)")
        .on("click", function(d) {
          colorState = COLORS.map(function(c) { return true; });
          colorMenuSetup();
-         drawChart(pageData, startPage, endPage);
+         drawColorChart(pageData, startPage, endPage);
        });
 
   menu.append('g')
     .append("circle")
       .attr("id", "no-colors")
-      .attr("cx", margin.left + (width - 60)/2 + 60)
+      .attr("cx", margin.left + (width - 15*gap)/2 + 15*gap)
       .attr("cy", 35)
       .attr("r", 15)
       .attr("fill", "#444")
       .on("click", function(d) {
         colorState = COLORS.map(function(c) { return false; });
         colorMenuSetup();
-        drawChart(pageData, startPage, endPage);
+        drawColorChart(pageData, startPage, endPage);
       });
 }
 
@@ -210,15 +223,73 @@ function loadData() {
     pageData = data;
     d3.csv("data/data_chapters2.csv", function (data) {
       chapterData = data;
-      drawChart(pageData, 0, numPages);
-
-      console.log({pageData});
-      console.log({chapterData})
+      drawLChart(pageData, 0, numPages);
+      drawSChart(pageData, 0, numPages);
+      drawColorChart(pageData, 0, numPages);
     });
   });
 }
 
-function drawChart(dataSource, start, end) {
+function drawLChart(dataSource, start, end) {
+  drawLineChart(dataSource, "lightness", start, end);
+}
+
+function drawSChart(dataSource, start, end) {
+  drawLineChart(dataSource, "saturation", start, end);
+}
+
+function drawLineChart(dataSource, feature, start, end) {
+  var data = dataSource.slice(start, end);
+
+  var chart = d3.select("#" + feature + "-chart");
+  chart.selectAll("." + feature + "-svg").remove();
+
+  var svg = chart.append("svg")
+    .attr("class", feature + "-svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")");
+
+  // AXES //
+
+  var x = d3.scaleLinear()
+    .domain([ start, end-1 ])
+    .range([ 0, width ]);
+  var xAxis = svg.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x).ticks(5).tickSize(0))
+
+  // Add X axis label:
+  svg.append("text")
+      .attr("text-anchor", "middle")
+      .attr("x", width/2)
+      .attr("y", height+40 )
+      .style("fill", "white")
+      .text("Page #");
+
+  // Add Y axis
+  var y = d3.scaleLinear()
+    .domain([ 0, 1 ])
+    .range([ height, 0 ]);
+  svg.append("g")
+    .attr("class", "axis")
+    .call(d3.axisLeft(y).ticks(0).tickSize(0))
+
+  svg.append("path")
+    .datum(data)
+    .attr("fill", "none")
+    .attr("stroke", "steelblue")
+    .attr("stroke-width", 1.5)
+    .attr("d", d3.line()
+      .x(function(d) { return x(d[""]) })
+      .y(function(d) { return y(d[feature]) })
+    )
+}
+
+function drawColorChart(dataSource, start, end) {
   var data = dataSource.slice(start, end);
 
   var chart = d3.select("#chart");

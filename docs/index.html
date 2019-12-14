@@ -5,16 +5,8 @@
   <script src="https://d3js.org/d3.v3.min.js"></script>
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <title>Daytripper</title>
   <style type="text/css">
-  <title>Poverty in the US by Demographic</title>
-
-  h1 {
-    color: white;
-  }
-
-  h1:hover {
-    color: #50d0ff;
-  }
 
   path:hover {
     cursor: pointer;
@@ -23,7 +15,6 @@
   /* Style for Custom Tooltip */
   div.tooltip {
    	position: absolute;
-  	text-align: center;
     width: auto;
     padding: 10px;
   	font: 12px sans-serif;
@@ -34,28 +25,50 @@
   	pointer-events: none;
   }
 
-  /* Legend Font Style */
   body {
-  	font: 11px sans-serif;
+  	font: 15px sans-serif;
     background-color: #222222;
     color: white;
-    text-align: center;
+    text-align: justify;
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
+    padding-bottom: 50px;
   }
 
-  #menu {
+  h1 {
+    text-align: center;
+  }
+
+  .inputs {
     overflow: hidden;
     text-align: center;
     margin-bottom: 10px;
     width: auto;
   }
 
-  #menu .option-group {
+  .inputs .option-group {
     overflow: hidden;
     display: inline-block;
     margin: 20px 20px 0px;
+  }
+
+  .axis path {
+    stroke: white;
+    stroke-width: 3px;
+  }
+
+  .tick line {
+    stroke-width: 2px;
+  }
+
+  .tick text {
+    fill: white;
+    font-size: 12px;
+  }
+
+  .axis-label text {
+    fill: white;
   }
 
 </style>
@@ -63,10 +76,105 @@
 
 <body>
   <div class="header">
-    <h1>Daytripper</h1>
+    <h1>Daytripper: Visualizing Trends in Color</h1>
+
+    <p>
+      Daytripper, a comic book by Fábio Moon and Gabriel Bá, captures a series
+      of seemingly day-to-day moments that end up defining the different story
+      arcs in the main character's life. These story arcs include falling in and
+      out of love, relationships with parents, friendships, fatherhood, and
+      career aspirations versus reality. As these arcs progress throughout the
+      book, different themes, characters, and emotions take prominence.
+    </p>
+
+    <p>
+      I wanted to see if I could capture these story arcs with data on how use
+      of color changed across the book. To collect this data, I started with an
+      image file for each page and extracted the color information for each
+      pixel on three dimensions: hue, lightness, and saturation. Hue represents
+      the degree on the color wheel, or where in the rainbow the color is.
+      Lightness represents where the color is in the gradient from black to
+      white. Saturation represents how concentrated the hue of the color is,
+      from grayscale to as vivid as possible. We can visualize how colors in
+      Daytripper change on these dimensions one by one.
+    </p>
+
+    <p>Chapter trend charts</p>
   </div>
 
-  <div id="menu">
+  <h2>Lightness</h2>
+
+  <p>General stuff about lightness</p>
+
+  <p>One particularly interesting chapter in this regard is Chapter 7.</p>
+
+  <div id="lightness-menu" class="inputs">
+    <div class="option-group">
+      Chapter:
+      <select id="lightness-chapter">
+        <option value="0">All</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+    </div>
+
+    <div class="option-group">
+      Page #s:
+      <input type="number" id="lightness-page-start" name="Start" min="0" max="224">
+      <input type="number" id="lightness-page-end" name="End" min="0" max="224">
+    </div>
+  </div>
+
+  <div id="lightness-chart"></div>
+
+  <h2>Saturation</h2>
+
+  <p>General stuff about saturation</p>
+
+  <p>One particularly interesting chapter in this regard is Chapter 6. Spike for plane crash.</p>
+
+  <div id="saturation-menu" class="inputs">
+    <div class="option-group">
+      Chapter:
+      <select id="saturation-chapter">
+        <option value="0">All</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+    </div>
+
+    <div class="option-group">
+      Page #s:
+      <input type="number" id="saturation-page-start" name="Start" min="0" max="224">
+      <input type="number" id="saturation-page-end" name="End" min="0" max="224">
+    </div>
+  </div>
+
+  <div id="saturation-chart"></div>
+
+  <h2>Hue</h2>
+
+  <p>General stuff about hue. spikes in red towards end.</p>
+
+  <p>Chapter 2 - greens associated with discussions of blackness, water being important</p>
+
+  <div id="menu" class="inputs">
     <div class="option-group">
       Chapter:
       <select id="chapter">
@@ -89,15 +197,13 @@
       <input type="number" id="page-start" name="Start" min="0" max="224">
       <input type="number" id="page-end" name="End" min="0" max="224">
     </div>
-
-
   </div>
 
   <div id="color-menu" class="option-group" />
 
   <div id="chart" />
 
-<script type="text/javascript" src="index.js"></script>
+  <script type="text/javascript" src="index.js"></script>
 
 </body>
 </html>
